@@ -1,0 +1,18 @@
+server:
+  port: 9527
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: gateway-9527.com
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+spring:
+  application:
+    name: MICROSERVICE-ZUUL-GATEWAY
+zuul:
+  routes:
+    plat.serviceId: aigou_server #webUser自己取得名字
+    plat.path: /plat/**  #路由映射：/wbUser/**这个路径的访问都路由到serverId服务处理
+  ignored-services: "*"  # 安全加固：忽略这个服务，如果要忽略所有的服务， “*”
+  prefix: "/aigou"  # 统一前缀
